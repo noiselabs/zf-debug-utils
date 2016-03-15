@@ -1,0 +1,22 @@
+# Composer files
+composer.lock
+vendor/
+
+# Local configs
+config/autoload/*.local.php
+
+# Binary gettext files
+*.mo
+
+# Data
+data/logs/
+data/cache/
+data/sessions/
+data/tmp/
+temp/
+
+# PHP-CS-Fixer
+.php_cs.cache
+
+# IDEs
+.idea/

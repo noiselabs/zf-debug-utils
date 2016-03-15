@@ -1,0 +1,31 @@
+{
+    "name": "noiselabs/zf-debug-utils",
+    "description": "Console commands and other utilities for debugging ZF2 apps",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vítor Brandão",
+            "email": "vitor@noiselabs.org"
+        }
+    ],
+    "require": {
+        "php": ">5.5",
+        "symfony/console": "^3.0",
+        "zendframework/zend-modulemanager": "~2.4"
+    },
+    "require-dev": {
+      "fabpot/php-cs-fixer": "^1.11",
+      "phpunit/phpunit": "^5.2"
+    },
+    "autoload": {
+      "psr-4": {
+        "Noiselabs\\ZfDebugModule\\": "src"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Noiselabs\\ZfDebugModule\\": "test"
+      }
+    }
+}
