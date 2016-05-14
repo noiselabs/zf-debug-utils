@@ -8,32 +8,33 @@ Installation
 
 Install the package via Composer:
 
-    ```bash
-    composer require noiselabs/zf-debug-utils
-    ```
+```bash
+composer require noiselabs/zf-debug-utils
+```
     
     
 Then enable the module by adding it to `application.config.php`:
     
-    ```php
-    <?php
-    'modules' => [
-        // ... 
-        'Noiselabs\ZfDebugModule',
-    ],
-    ```
+```php
+<?php
+'modules' => [
+    // ... 
+    'Noiselabs\ZfDebugModule',
+],
+```
 
 License
 -------
 
-This bundle is licensed under the MIT License. See the [LICENSE file](https://github.com/noiselabs/zf-debug-utils/blob/master/LICENSE) for details.
+This library is licensed under the MIT License. See the [LICENSE file](https://github.com/noiselabs/zf-debug-utils/blob/master/LICENSE) for details.
 
 Authors
 -------
 
-Vítor Brandão - <vitor@noiselabs.org> ~ [twitter.com/noiselabs](http://twitter.com/noiselabs) ~ [blog.noiselabs.org](http://blog.noiselabs.org)
+Vítor Brandão - <vitor@noiselabs.io> ~ [twitter.com/noiselabs](http://twitter.com/noiselabs) ~ [https://noiselabs.io](https://noiselabs.io)
 
 See also the list of [contributors](https://github.com/noiselabs/zf-debug-utils/contributors) who participated in this project.
+
 
 Submitting bugs and feature requests
 ------------------------------------
