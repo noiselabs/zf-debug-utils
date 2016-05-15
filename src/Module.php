@@ -17,6 +17,10 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
  */
 class Module implements ConfigProviderInterface
 {
+    const ID = 'zf-debug-utils';
+    const NAME = 'ZfDebug Module';
+    const VERSION = '0.1.0-DEV';
+
     /**
      * {@inheritdoc}
      */

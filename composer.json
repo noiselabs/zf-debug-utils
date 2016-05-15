@@ -11,7 +11,10 @@
     ],
     "require": {
         "php": ">5.5",
-        "zendframework/zend-modulemanager": "~2.4"
+        "zendframework/zend-console": "~2.4",
+        "zendframework/zend-modulemanager": "~2.4",
+        "zendframework/zend-mvc":  "~2.4",
+        "container-interop/container-interop": "^1.0"
     },
     "require-dev": {
       "fabpot/php-cs-fixer": "^1.11",
