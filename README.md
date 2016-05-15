@@ -2,6 +2,7 @@ Noiselabs ZfDebugModule
 =======================
 
 [![Join the chat at https://gitter.im/noiselabs/zf-debug-utils](https://badges.gitter.im/noiselabs/zf-debug-utils.svg)](https://gitter.im/noiselabs/zf-debug-utils?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/noiselabs/zf-debug-utils.svg?branch=master)](https://travis-ci.org/noiselabs/zf-debug-utils)
 
 Console commands and other utilities for debugging ZF2 apps.
 
