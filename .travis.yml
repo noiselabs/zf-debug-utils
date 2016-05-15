@@ -1,0 +1,35 @@
+sudo: false
+
+language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.local
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 5.4
+    - php: 5.5
+    - php: 5.6
+    - php: 7
+    - php: hhvm
+  allow_failures:
+    - php: hhvm
+
+before_script:
+  - composer self-update
+  - composer install --prefer-dist
+
+script:
+  - composer test
+
+notifications:
+  irc: "irc.freenode.org#noiselabs"
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/0be692024c564336df37
+    on_success: change
+    on_failure: always
+    on_start: false

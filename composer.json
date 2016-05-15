@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">5.5",
+        "php": "^5.4.8 || ^7.0",
         "zendframework/zend-console": "~2.4",
         "zendframework/zend-modulemanager": "~2.4",
         "zendframework/zend-mvc":  "~2.4",
@@ -21,13 +21,24 @@
       "phpunit/phpunit": "^4.8"
     },
     "autoload": {
-      "psr-4": {
-        "Noiselabs\\ZfDebugModule\\": "src"
-      }
+        "psr-4": {
+          "Noiselabs\\ZfDebugModule\\": "src"
+        }
     },
     "autoload-dev": {
-      "psr-4": {
-        "Noiselabs\\ZfDebugModule\\": "test"
-      }
+        "psr-4": {
+          "Noiselabs\\ZfDebugModule\\": "test"
+        }
+    },
+    "scripts": {
+        "check": [
+          "@cs-check",
+          "@test"
+      ],
+      "upload-coverage": "coveralls -v",
+      "cs-check": "./vendor/bin/php-cs-fixer --config-file=.php_cs fix -v --diff --dry-run",
+      "cs-fix": "./vendor/bin/php-cs-fixer --config-file=.php_cs fix -v",
+      "test": "phpunit",
+      "test-coverage": "phpunit --coverage-clover build/code-coverage/clover/clover.xml --coverage-html build/code-coverage/html/"
     }
 }
