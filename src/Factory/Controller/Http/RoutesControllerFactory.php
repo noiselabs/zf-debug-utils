@@ -9,6 +9,8 @@
 namespace Noiselabs\ZfDebugModule\Factory\Controller\Http;
 
 use Noiselabs\ZfDebugModule\Controller\Http\RoutesController;
+use Noiselabs\ZfDebugModule\Factory\Util\RoutesInspectorFactory;
+use Zend\Mvc\Controller\ControllerManager;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -24,6 +26,10 @@ class RoutesControllerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new RoutesController();
+        /* @var ControllerManager $serviceLocator */
+        $mainServiceLocator = $serviceLocator->getServiceLocator();
+        $routesInspector = $mainServiceLocator->get(RoutesInspectorFactory::SERVICE_NAME);
+
+        return new RoutesController($routesInspector);
     }
 }
