@@ -8,12 +8,22 @@
 
 namespace Noiselabs\ZfDebugModule\Controller\Http;
 
+use Noiselabs\ZfDebugModule\Module;
+use Noiselabs\ZfDebugModule\Package;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    /**
+     * @return ViewModel
+     */
     public function indexAction()
     {
-        throw new \Exception('not there yet');
+        $this->layout(Module::DEFAULT_LAYOUT);
+        $view = new ViewModel([]);
+        $view->setTemplate(Package::FQPN . '/index/index');
+
+        return $view;
     }
 }

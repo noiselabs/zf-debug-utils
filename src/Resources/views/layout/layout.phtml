@@ -1,0 +1,15 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title><?php $this->headTitle(); ?></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?php echo $this->headLink()->prependStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap.min.css'); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap-theme.min.css'); ?>
+    </head>
+    <body>
+    <?php echo $this->content; ?>
+    </body>
+</html>

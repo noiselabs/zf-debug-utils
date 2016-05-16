@@ -9,6 +9,7 @@
 use Noiselabs\ZfDebugModule\Factory\Controller\Console\RoutesControllerFactory as ConsoleRoutesControllerFactory;
 use Noiselabs\ZfDebugModule\Factory\Controller\Http\IndexControllerFactory;
 use Noiselabs\ZfDebugModule\Factory\Controller\Http\RoutesControllerFactory as HttpRoutesControllerFactory;
+use Noiselabs\ZfDebugModule\Package;
 
 return [
     'controllers' => [
@@ -21,7 +22,7 @@ return [
     'console' => [
         'router' => [
             'routes' => [
-                'zf-debug-utils\router\list-all' => [
+                Package::FQPN . '/router/list-all' => [
                     'options' => [
                         'route' => 'debug:router:list-all',
                         'defaults' => [
@@ -35,21 +36,43 @@ return [
     ],
     'router' => [
         'routes' => [
-            'zf-debug-utils' => [
+            Package::FQPN => [
                 'type' => 'literal',
                 'options' => [
                     'route' => '/_debug',
                     'defaults' => [
                         'controller' => IndexControllerFactory::SERVICE_NAME,
-                        'action' => 'indexAction',
+                        'action' => 'index',
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'routes' => [
+                        'type' => 'literal',
+                        'options' => [
+                            'route' => '/routes',
+                            'defaults' => [
+                                'controller' => HttpRoutesControllerFactory::SERVICE_NAME,
+                                'action' => 'listAll',
+                            ],
+                        ],
                     ],
                 ],
             ],
         ],
     ],
     'view_manager' => [
-        'template_path_stack' => [
-            'zf-debug-utils' => __DIR__ . '/../Resources/views',
+        'template_map' => [
+            Package::FQPN . '/index/index' => __DIR__ . '/../views/index/index.phtml',
+            Package::FQPN . '/layout' => __DIR__ . '/../views/layout/layout.phtml',
+            Package::FQPN . '/routes/list-all' => __DIR__ . '/../views/routes/list-all.phtml',
+        ],
+    ],
+    'asset_manager' => [
+        'resolver_configs' => [
+            'aliases' => [
+                Package::FQPN => __DIR__ . '/../public',
+            ],
         ],
     ],
 ];

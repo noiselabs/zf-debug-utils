@@ -9,23 +9,30 @@
 namespace Noiselabs\ZfDebugModule;
 
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
 
 /**
  * ZfDebug Module.
  *
  * @author Vítor Brandão <vitor@noiselabs.org>
  */
-class Module implements ConfigProviderInterface
+class Module implements ConfigProviderInterface, DependencyIndicatorInterface
 {
-    const ID = 'zf-debug-utils';
-    const NAME = 'ZfDebug Module';
-    const VERSION = '0.1.0-DEV';
+    const DEFAULT_LAYOUT = 'noiselabs/zf-debug-utils/layout';
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getModuleDependencies()
+    {
+        return ['AssetManager'];
+    }
 
     /**
      * {@inheritdoc}
      */
     public function getConfig()
     {
-        return require __DIR__ . '/../config/module.config.php';
+        return require __DIR__ . '/Resources/config/module.config.php';
     }
 }
