@@ -1,15 +1,54 @@
-<!doctype html>
-<html class="no-js" lang="">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title><?php $this->headTitle(); ?></title>
+        <?php echo $this->headTitle(' | ZFDebug Utils'); ?>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <?php echo $this->headLink()->prependStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap.min.css'); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap-theme.min.css'); ?>
+        <?php echo $this
+                ->headLink(['rel' => 'shortcut icon', 'href' => $this->basePath() . '/zf-debug-utils/favicon.ico'])
+                ->headLink()->appendStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap.min.css')
+                ->headLink()->appendStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap-theme.min.css')
+                ->headLink()->appendStylesheet($this->basePath() . '/zf-debug-utils/css/style.css'); ?>
     </head>
     <body>
-    <?php echo $this->content; ?>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="<?php echo $this->url('zf-debug-utils'); ?>">ZFDebug Utils</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/noiselabs/zf-debug-utils/blob/master/README.md">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="<?php echo $this->url('zf-debug-utils'); ?>">Home <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li><a href="<?php echo $this->url('zf-debug-utils/routes'); ?>">Routes</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <?php echo $this->content; ?>
+            </div>
+        </div>
+    </div>
+    <?php echo $this->headScript()
+                ->prependFile($this->basePath('/zf-debug-utils/js/jquery.min.js'))
+                ->prependFile($this->basePath('/zf-debug-utils/js/bootstrap.min.js')); ?>
     </body>
 </html>

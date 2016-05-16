@@ -36,7 +36,7 @@ return [
     ],
     'router' => [
         'routes' => [
-            Package::FQPN => [
+            Package::NAME => [
                 'type' => 'literal',
                 'options' => [
                     'route' => '/_debug',
@@ -70,8 +70,13 @@ return [
     ],
     'asset_manager' => [
         'resolver_configs' => [
-            'aliases' => [
-                Package::FQPN => __DIR__ . '/../public',
+            'map' => [
+                'zf-debug-utils/favicon.ico' => __DIR__ . '/../public/favicon.ico',
+                'zf-debug-utils/css/bootstrap.min.css' => __DIR__ . '/../public/css/bootstrap.min.css',
+                'zf-debug-utils/css/bootstrap-theme.min.css' => __DIR__ . '/../public/css/bootstrap-theme.min.css',
+                'zf-debug-utils/css/style.css' => __DIR__ . '/../public/css/style.css',
+                'zf-debug-utils/js/bootstrap.min.js' => __DIR__ . '/../public/js/bootstrap.min.js',
+                'zf-debug-utils/js/jquery.min.js' => __DIR__ . '/../public/js/jquery.min.js',
             ],
         ],
     ],
