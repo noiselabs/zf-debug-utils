@@ -36,10 +36,10 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="<?php echo $this->url('zf-debug-utils'); ?>">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="<?php if ('zf-debug-utils' === $this->__currentRouteName): echo 'active'; endif; ?>"><a href="<?php echo $this->url('zf-debug-utils'); ?>">Home <span class="sr-only">(current)</span></a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li><a href="<?php echo $this->url('zf-debug-utils/routes'); ?>">Routes</a></li>
+                    <li class="<?php if ('zf-debug-utils/routes' === $this->__currentRouteName): echo 'active'; endif; ?>"><a href="<?php echo $this->url('zf-debug-utils/routes'); ?>">Routes</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -48,7 +48,7 @@
         </div>
     </div>
     <?php echo $this->headScript()
-                ->prependFile($this->basePath('/zf-debug-utils/js/jquery.min.js'))
-                ->prependFile($this->basePath('/zf-debug-utils/js/bootstrap.min.js')); ?>
+                ->appendFile($this->basePath('/zf-debug-utils/js/jquery.min.js'))
+                ->appendFile($this->basePath('/zf-debug-utils/js/bootstrap.min.js')); ?>
     </body>
 </html>

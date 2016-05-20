@@ -1,3 +1,22 @@
 <?php $this->headTitle()->append('Routes'); ?>
 
-<h1 class="page-header">Routes</h1>
+<h1 class="page-header">List of Routes</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>URL</th>
+            <th>Controller::Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->routeCollection->getRoutes() as $route): ?>
+        <tr>
+            <td class="text-success">"<?php echo $route->getName(); ?>"</td>
+            <td class="text-primary"><?php echo $route->getUrl(); ?></td>
+            <td><code><?php echo sprintf('%s::%s', $route->getController(), $route->getAction()); ?></code></td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

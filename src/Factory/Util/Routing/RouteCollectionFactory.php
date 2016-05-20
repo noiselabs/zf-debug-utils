@@ -6,19 +6,21 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModule\Factory\Util;
+namespace Noiselabs\ZfDebugModule\Factory\Util\Routing;
 
-use Noiselabs\ZfDebugModule\Util\RoutesInspector;
-use Zend\Mvc\Router\RouteInterface;
+use Noiselabs\ZfDebugModule\Util\Routing\RouteCollection;
+use Noiselabs\ZfDebugModule\Util\Routing\RouteCollectionBuilder;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class RoutesInspectorFactory implements FactoryInterface
+class RouteCollectionFactory implements FactoryInterface
 {
-    const SERVICE_NAME = RoutesInspector::class;
+    const SERVICE_NAME = RouteCollection::class;
 
     /**
-     * {@inheritdoc}
+     * @param ServiceLocatorInterface $serviceLocator
+     * 
+     * @return RouteCollection
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
@@ -26,9 +28,8 @@ class RoutesInspectorFactory implements FactoryInterface
         $config = $serviceLocator->get('config');
         $config = isset($config['router']['routes']) ? $config['router']['routes'] : [];
 
-        /** @var RouteInterface $router */
-        $router = $serviceLocator->get('router');
-
-        return new RoutesInspector($router, $config);
+        $builder = new RouteCollectionBuilder($config);
+        
+        return $builder->build();
     }
 }

@@ -9,7 +9,7 @@
 use Noiselabs\ZfDebugModule\Factory\Controller\Console\RoutesControllerFactory as ConsoleRoutesControllerFactory;
 use Noiselabs\ZfDebugModule\Factory\Controller\Http\IndexControllerFactory;
 use Noiselabs\ZfDebugModule\Factory\Controller\Http\RoutesControllerFactory as HttpRoutesControllerFactory;
-use Noiselabs\ZfDebugModule\Factory\Util\RoutesInspectorFactory;
+use Noiselabs\ZfDebugModule\Factory\Util\Routing\RouteCollectionFactory;
 use Noiselabs\ZfDebugModule\Package;
 
 return [
@@ -76,7 +76,7 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            RoutesInspectorFactory::SERVICE_NAME => RoutesInspectorFactory::class,
+            RouteCollectionFactory::SERVICE_NAME => RouteCollectionFactory::class,
         ],
     ],
     'view_manager' => [

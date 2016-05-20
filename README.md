@@ -17,12 +17,12 @@ composer require noiselabs/zf-debug-utils
 ```
     
     
-Then enable the module by adding it to `application.config.php`:
+Then enable this module by adding it and `AssetManager` (a dependency) to `application.config.php`.
     
 ```php
 <?php
 'modules' => [
-    // ... 
+    'AssetManager',
     'Noiselabs\ZfDebugModule',
 ],
 ```
