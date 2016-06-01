@@ -10,6 +10,9 @@ namespace Noiselabs\ZfDebugModule\Util\Routing;
 
 use Zend\Mvc\Router\RouteInterface;
 
+/**
+ * RouteCollectionBuilder is only able to build FlatRouteCollection(s).
+ */
 class RouteCollectionBuilder
 {
     /**
@@ -28,48 +31,66 @@ class RouteCollectionBuilder
     }
 
     /**
-     * @return RouteCollection
+     * @return FlatRouteCollection
      */
     public function build()
     {
-        $routeCollection = new FlatRouteCollection();
-        $this->processRoutes($routeCollection, $this->routes);
-
-        return $routeCollection;
+        return $this->processRoutes(new FlatRouteCollection(), $this->routes);
     }
 
     /**
      * @param FlatRouteCollection $routeCollection
      * @param array               $routesConfig
-     * @param array               $parentRoutesConfig
+     * @param Route               $parentRoute
+     *
+     * @return FlatRouteCollection
      */
-    private function processRoutes(FlatRouteCollection $routeCollection, array $routesConfig, array $parentRoutesConfig = null)
+    private function processRoutes(FlatRouteCollection $routeCollection, array $routesConfig, Route $parentRoute = null)
     {
         foreach (array_keys($routesConfig) as $k) {
-            $routeName = $k;
-            $routeUrl = isset($routesConfig[$k]['options']['route']) ? $routesConfig[$k]['options']['route'] : '';
-
-            if (!empty($parentRoutesConfig)) {
-                $pk = key($parentRoutesConfig);
-
-                $routeName = $pk . '/' . $routeName;
-                if (isset($parentRoutesConfig[$pk]['options']['route'])) {
-                    $routeUrl = $parentRoutesConfig[$pk]['options']['route'] . $routeUrl;
-                }
-            }
-
-            $controller = isset($routesConfig[$k]['options']['defaults']['controller'])
-                ? $routesConfig[$k]['options']['defaults']['controller'] : null;
-            $action = isset($routesConfig[$k]['options']['defaults']['action'])
-                ? $routesConfig[$k]['options']['defaults']['action'] : null;
-            $route = new Route($routeName, $routeUrl, $controller, $action);
-            $routeCollection->addRoute($route);
-
+            $childRoutes = null;
             if (isset($routesConfig[$k]['child_routes']) && !empty($routesConfig[$k]['child_routes'])) {
                 $childRoutes = $routesConfig[$k]['child_routes'];
                 unset($routesConfig[$k]['child_routes']);
-                $this->processRoutes($routeCollection, $childRoutes, [$k => $routesConfig[$k]]);
+            }
+
+            $routesConfig[$k]['name'] = $k;
+            $route = $this->processRoute($routesConfig[$k], $parentRoute);
+            if (!isset($routesConfig[$k]['may_terminate']) || false !== $routesConfig[$k]['may_terminate']) {
+                $routeCollection->addRoute($route);
+            }
+
+            if (null !== $childRoutes) {
+                $this->processRoutes($routeCollection, $childRoutes, $route);
             }
         }
+
+        return $routeCollection;
+    }
+
+    /**
+     * @param array      $routeConfig
+     * @param Route|null $parentRoute
+     *
+     * @return Route
+     */
+    private function processRoute(array $routeConfig, Route $parentRoute = null)
+    {
+        $name = $routeConfig['name'];
+        $url = isset($routeConfig['options']['route']) ? $routeConfig['options']['route'] : '';
+        $controller = isset($routeConfig['options']['defaults']['controller'])
+            ? $routeConfig['options']['defaults']['controller'] : null;
+        $action = isset($routeConfig['options']['defaults']['action'])
+            ? $routeConfig['options']['defaults']['action'] : null;
+
+        if (null !== $parentRoute) {
+            $name = $parentRoute->getName() . '/' . $name;
+            $url = $parentRoute->getUrl() . $url;
+            if (null === $controller) {
+                $controller = $parentRoute->getController();
+            }
+        }
+
+        return new Route($name, $url, $controller, $action);
     }
 }
