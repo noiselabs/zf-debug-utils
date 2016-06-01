@@ -8,15 +8,13 @@
 
 namespace Noiselabs\ZfDebugModule\Util\Routing;
 
-use Zend\Mvc\Router\RouteInterface;
-
 /**
  * RouteCollectionBuilder is only able to build FlatRouteCollection(s).
  */
 class RouteCollectionBuilder
 {
     /**
-     * @var RouteInterface
+     * @var array
      */
     private $routes;
 
@@ -25,7 +23,7 @@ class RouteCollectionBuilder
      *
      * @param array $routes
      */
-    public function __construct(array $routes = [])
+    public function __construct(array $routes)
     {
         $this->routes = $routes;
     }
