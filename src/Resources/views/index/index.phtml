@@ -1,3 +1,28 @@
 <?php $this->headTitle()->append('Home'); ?>
 
 <h1 class="page-header">Overview</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container-fluid">
+                <div class="panel panel-default zf-debug-utils__component__panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-random" aria-hidden="true"></span> Routing</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            <blockquote>Routing is the act of matching a request to a given controller.
+
+                            Typically, routing will examine the request URI, and attempt to match the URI path segment against provided constraints. If the constraints match, a set of “matches” are returned, one of which should be the controller name to execute. Routing can utilize other portions of the request URI or environment as well – for example, the host or scheme, query parameters, headers, request method, and more.
+                            </blockquote>
+                            <i>&mdash; from <a href="http://framework.zend.com/manual/current/en/modules/zend.mvc.routing.html">Zend\Mvc\Routing</a></i>
+                        </p>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="<?php echo $this->url('zf-debug-utils/routes/list'); ?>">List all Routes</a></li>
+                        <li class="list-group-item"><a href="<?php echo $this->url('zf-debug-utils/routes/match'); ?>">Match a Route</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

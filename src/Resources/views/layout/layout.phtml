@@ -10,6 +10,7 @@
                 ->headLink(['rel' => 'shortcut icon', 'href' => $this->basePath() . '/zf-debug-utils/favicon.ico'])
                 ->headLink()->appendStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap.min.css')
                 ->headLink()->appendStylesheet($this->basePath() . '/zf-debug-utils/css/bootstrap-theme.min.css')
+                ->headLink()->appendStylesheet($this->basePath() . '/zf-debug-utils/css/datatables.min.css')
                 ->headLink()->appendStylesheet($this->basePath() . '/zf-debug-utils/css/style.css'); ?>
     </head>
     <body>
@@ -22,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo $this->url('zf-debug-utils'); ?>">ZFDebug Utils</a>
+                <a class="navbar-brand" href="<?php echo $this->url('zf-debug-utils'); ?>">ZF Debug Utils</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -36,10 +37,9 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="<?php if ('zf-debug-utils' === $this->__currentRouteName): echo 'active'; endif; ?>"><a href="<?php echo $this->url('zf-debug-utils'); ?>">Home <span class="sr-only">(current)</span></a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li class="<?php if ('zf-debug-utils/routes' === $this->__currentRouteName): echo 'active'; endif; ?>"><a href="<?php echo $this->url('zf-debug-utils/routes'); ?>">Routes</a></li>
+                    <li><h5><span class="glyphicon glyphicon-random" aria-hidden="true"></span> Routing</h5></li>
+                    <li class="<?php if ('zf-debug-utils/routes/list' === $this->__currentRouteName): echo 'active'; endif; ?>"><a href="<?php echo $this->url('zf-debug-utils/routes/list'); ?>">List all Routes</a></li>
+                    <li class="<?php if ('zf-debug-utils/routes/match' === $this->__currentRouteName): echo 'active'; endif; ?>"><a href="<?php echo $this->url('zf-debug-utils/routes/match'); ?>">Match a Route</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -47,8 +47,12 @@
             </div>
         </div>
     </div>
+
+    <footer></footer>
     <?php echo $this->headScript()
                 ->appendFile($this->basePath('/zf-debug-utils/js/jquery.min.js'))
-                ->appendFile($this->basePath('/zf-debug-utils/js/bootstrap.min.js')); ?>
+                ->appendFile($this->basePath('/zf-debug-utils/js/bootstrap.min.js'))
+                ->appendFile($this->basePath('/zf-debug-utils/js/datatables.min.js'))
+                ->appendFile($this->basePath('/zf-debug-utils/js/main.js')); ?>
     </body>
 </html>

@@ -6,7 +6,7 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuletest;
+namespace Noiselabs\ZfDebugModuleTest;
 
 use Noiselabs\ZfDebugModule\Module;
 use PHPUnit_Framework_TestCase;

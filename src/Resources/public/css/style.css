@@ -46,9 +46,19 @@ body {
     margin-bottom: 20px;
     margin-left: -20px;
 }
-.nav-sidebar > li > a {
+.nav-sidebar > li {
     padding-right: 20px;
     padding-left: 20px;
+}
+.nav-sidebar > li > h5 {
+    padding: 0 15px;
+}
+.nav-sidebar > li > h5 > .glyphicon,
+.zf-debug-utils__component__panel .glyphicon {
+    margin-right: 5px;
+}
+.zf-debug-utils__component__panel blockquote {
+    font-size: inherit;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
@@ -92,4 +102,17 @@ body {
 .placeholder img {
     display: inline-block;
     border-radius: 50%;
+}
+
+#zf-debug-utils__form__match-route {
+    margin-bottom: 20px;
+}
+#zf-debug-utils__form__match-route .form-group {
+    margin-right: 0.5em;
+}
+.zf-debug-utils__route-match__panel {
+    display: none;
+}
+footer {
+    margin-bottom: 3em;
 }

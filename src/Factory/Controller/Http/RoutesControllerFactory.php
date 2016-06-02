@@ -10,7 +10,9 @@ namespace Noiselabs\ZfDebugModule\Factory\Controller\Http;
 
 use Noiselabs\ZfDebugModule\Controller\Http\RoutesController;
 use Noiselabs\ZfDebugModule\Factory\Util\Routing\RouteCollectionFactory;
+use Noiselabs\ZfDebugModule\Factory\Util\Routing\RouteMatcherFactory;
 use Noiselabs\ZfDebugModule\Util\Routing\RouteCollection;
+use Noiselabs\ZfDebugModule\Util\Routing\RouteMatcher;
 use Zend\Mvc\Controller\ControllerManager;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -31,7 +33,9 @@ class RoutesControllerFactory implements FactoryInterface
         $mainServiceLocator = $serviceLocator->getServiceLocator();
         /** @var RouteCollection $routeCollection */
         $routeCollection = $mainServiceLocator->get(RouteCollectionFactory::SERVICE_NAME);
+        /** @var RouteMatcher $routeMatcher */
+        $routeMatcher = $mainServiceLocator->get(RouteMatcherFactory::SERVICE_NAME);
 
-        return new RoutesController($routeCollection);
+        return new RoutesController($routeCollection, $routeMatcher);
     }
 }

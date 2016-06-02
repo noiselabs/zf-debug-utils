@@ -1,0 +1,78 @@
+<?php $this->headTitle()->append('Match a Route'); ?>
+
+<h1 class="page-header">Match a Route</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <form id="zf-debug-utils__form__match-route" class="form-inline" 
+              action="<?php echo $this->url('zf-debug-utils/routes/do-match-route'); ?>" method="post">
+            <div class="form-group">
+                <label class="sr-only" for="method">Method</label>
+                <div class="input-group">
+                    <select name="method" id="method" class="form-control input-lg">
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="PATCH">PATCH</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="HEAD">HEAD</option>
+                        <option value="TRACE">TRACE</option>
+                        <option value="OPTIONS">OPTIONS</option>
+                        <option value="CONNECT">CONNECT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="url">URL</label>
+                <div class="input-group">
+                    <div class="input-group-addon">URL</div>
+                    <input name="url" type="text" class="form-control input-lg" id="url" placeholder="/some/url"
+                           required="required">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Find Route</button>
+        </form>
+    </div>
+    
+    <div class="row">
+        <div class="progress zf-debug-utils__route-match__panel">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+                Loading routes...
+            </div>
+        </div>
+        <div class="panel panel-default panel-success zf-debug-utils__route-match__panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">A match was found for
+                <span id="zf-debug-utils__route-match__panel__source-method--success"></span>
+                "<span id="zf-debug-utils__route-match__panel__source-url--success"></span>"
+            </div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td><samp id="zf-debug-utils__route-match__panel__match-name"></samp></td>
+                    </tr>
+                    <tr>
+                        <td><b>URL</b></td>
+                        <td><samp id="zf-debug-utils__route-match__panel__match-url"></samp></td>
+                    </tr>
+                    <tr>
+                        <td><b>Controller</b></td>
+                        <td><samp id="zf-debug-utils__route-match__panel__match-controller"></samp></td>
+                    </tr>
+                    <tr>
+                        <td><b>Action</b></td>
+                        <td><samp id="zf-debug-utils__route-match__panel__match-action"></samp></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default panel-danger zf-debug-utils__route-match__panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">No match found for
+                <span id="zf-debug-utils__route-match__panel__source-method--failed"></span>
+                "<span id="zf-debug-utils__route-match__panel__source-url--failed"></span>"
+            </div>
+        </div>
+    </div>
+</div>

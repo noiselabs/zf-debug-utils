@@ -11,7 +11,16 @@ namespace Noiselabs\ZfDebugModule\Util\Routing;
 interface RouteCollection
 {
     /**
-     * @return array
+     * @param string $routeName
+     * 
+     * @return Route
+     */
+    public function getRoute($routeName);
+
+    /**
+     * @return Route[]
      */
     public function getRoutes();
+
+
 }

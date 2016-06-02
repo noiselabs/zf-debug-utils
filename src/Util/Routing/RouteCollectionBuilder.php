@@ -89,6 +89,11 @@ class RouteCollectionBuilder
             }
         }
 
+        if (null === $action) {
+            $action = 'index';
+        }
+        $action .= 'Action';
+
         return new Route($name, $url, $controller, $action);
     }
 }

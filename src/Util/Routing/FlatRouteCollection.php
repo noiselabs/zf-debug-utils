@@ -11,7 +11,7 @@ namespace Noiselabs\ZfDebugModule\Util\Routing;
 class FlatRouteCollection implements RouteCollection
 {
     /**
-     * @var array
+     * @var Route[]
      */
     private $routes;
 
@@ -31,6 +31,20 @@ class FlatRouteCollection implements RouteCollection
     public function addRoute(Route $route)
     {
         $this->routes[$route->getName()] = $route;
+    }
+
+    /**
+     * @param string $routeName
+     *
+     * @return Route|null
+     */
+    public function getRoute($routeName)
+    {
+        if (!isset($this->routes[$routeName])) {
+            return null;
+        }
+        
+        return $this->routes[$routeName];
     }
 
     /**
