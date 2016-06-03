@@ -22,7 +22,9 @@ before_script:
   - composer install --prefer-dist
 
 script:
-  - composer test
+  - composer test-coverage
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover build/code-coverage/clover/clover.xml
 
 notifications:
   irc: "irc.freenode.org#noiselabs"
