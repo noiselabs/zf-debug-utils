@@ -27,6 +27,7 @@ class RoutesControllerFactoryTest extends PHPUnit_Framework_TestCase
         /** @var ControllerManager|PHPUnit_Framework_MockObject_MockObject $controllerManager */
         $controllerManager = $this
             ->getMockBuilder(ControllerManager::class)
+            ->disableOriginalConstructor()
             ->getMock();
         $controllerManager
             ->expects($this->any())
