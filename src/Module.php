@@ -52,7 +52,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Dep
      */
     public function onBootstrap(EventInterface $e)
     {
-        if (!$e instanceof EventInterface) {
+        if (!$e instanceof MvcEvent) {
             return;
         }
 

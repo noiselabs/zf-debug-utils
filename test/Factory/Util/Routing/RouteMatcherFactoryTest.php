@@ -38,4 +38,9 @@ class RouteMatcherFactoryTest extends PHPUnit_Framework_TestCase
         $routeMatcher = $factory->createService($serviceManager);
         $this->assertInstanceOf(RouteMatcher::class, $routeMatcher);
     }
+
+    public function testServiceNameIsDefined()
+    {
+        $this->assertTrue(defined(RouteMatcherFactory::class . '::SERVICE_NAME'));
+    }
 }

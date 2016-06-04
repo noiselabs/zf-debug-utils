@@ -24,6 +24,7 @@ class Route
      * @var string
      */
     private $controller;
+
     /**
      * @var string
      */

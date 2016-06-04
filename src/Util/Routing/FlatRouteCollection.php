@@ -22,7 +22,10 @@ class FlatRouteCollection implements RouteCollection
      */
     public function __construct(array $routes = [])
     {
-        $this->routes = $routes;
+        $this->routes = [];
+        foreach ($routes as $route) {
+            $this->addRoute($route);
+        }
     }
 
     /**
@@ -41,9 +44,9 @@ class FlatRouteCollection implements RouteCollection
     public function getRoute($routeName)
     {
         if (!isset($this->routes[$routeName])) {
-            return null;
+            return;
         }
-        
+
         return $this->routes[$routeName];
     }
 
@@ -55,7 +58,10 @@ class FlatRouteCollection implements RouteCollection
     public function getRoutes($sort = true)
     {
         if (true === $sort) {
-            ksort($this->routes, SORT_NATURAL);
+            $routes = $this->routes;
+            ksort($routes, SORT_NATURAL);
+
+            return $routes;
         }
 
         return $this->routes;

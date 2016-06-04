@@ -12,7 +12,6 @@ use Noiselabs\ZfDebugModule\Factory\Controller\Http\RoutesControllerFactory as H
 use Noiselabs\ZfDebugModule\Factory\Util\Routing\RouteCollectionFactory;
 use Noiselabs\ZfDebugModule\Factory\Util\Routing\RouteMatcherFactory;
 use Noiselabs\ZfDebugModule\Package;
-use Noiselabs\ZfDebugModule\Util\Routing\RouteMatcher;
 
 return [
     'asset_manager' => [
@@ -74,7 +73,6 @@ return [
                             'route' => '/routes',
                             'defaults' => [
                                 'controller' => HttpRoutesControllerFactory::SERVICE_NAME,
-                                'action' => 'index',
                             ],
                         ],
                         'child_routes' => [
@@ -84,7 +82,6 @@ return [
                                 'options' => [
                                     'route' => '/match-route',
                                     'defaults' => [
-                                        'controller' => HttpRoutesControllerFactory::SERVICE_NAME,
                                         'action' => 'matchRoute',
                                     ],
                                 ],

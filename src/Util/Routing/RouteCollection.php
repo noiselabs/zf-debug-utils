@@ -21,6 +21,4 @@ interface RouteCollection
      * @return Route[]
      */
     public function getRoutes();
-
-
 }
