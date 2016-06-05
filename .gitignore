@@ -22,3 +22,6 @@ temp/
 .idea/
 
 /build
+
+# Documentation
+/docs/_build
