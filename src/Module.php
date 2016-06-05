@@ -48,7 +48,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Dep
      *
      * @param EventInterface|MvcEvent $e
      *
-     * @return array
+     * @return array|null
      */
     public function onBootstrap(EventInterface $e)
     {
