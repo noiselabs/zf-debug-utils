@@ -27,7 +27,6 @@ return [
                     'route' => '/routes',
                     'defaults' => [
                         'controller' => 'HttpRoutesController',
-                        'action' => 'index',
                     ],
                 ],
                 'child_routes' => [
@@ -48,7 +47,6 @@ return [
                         'options' => [
                             'route' => '/list',
                             'defaults' => [
-                                'controller' => 'HttpRoutesController',
                                 'action' => 'listAll',
                             ],
                         ],

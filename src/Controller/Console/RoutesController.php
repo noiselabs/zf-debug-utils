@@ -8,12 +8,13 @@
 
 namespace Noiselabs\ZfDebugModule\Controller\Console;
 
+use RuntimeException;
 use Zend\Mvc\Controller\AbstractActionController;
 
 class RoutesController extends AbstractActionController
 {
     public function listAll()
     {
-        throw new \Exception('not there yet');
+        throw new RuntimeException('not there yet');
     }
 }

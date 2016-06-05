@@ -6,7 +6,7 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuletest\Util\Routing;
+namespace Noiselabs\ZfDebugModuleTest\Unit\Util\Routing;
 
 use Noiselabs\ZfDebugModule\Util\Routing\FlatRouteCollection;
 use Noiselabs\ZfDebugModule\Util\Routing\Route;

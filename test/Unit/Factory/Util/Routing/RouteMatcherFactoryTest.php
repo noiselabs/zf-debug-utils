@@ -6,7 +6,7 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuletest\Factory\Util\Routing;
+namespace Noiselabs\ZfDebugModuleTest\Unit\Factory\Util\Routing;
 
 use Noiselabs\ZfDebugModule\Factory\Util\Routing\RouteMatcherFactory;
 use Noiselabs\ZfDebugModule\Util\Routing\RouteMatcher;

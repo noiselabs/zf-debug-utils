@@ -73,6 +73,7 @@ return [
                             'route' => '/routes',
                             'defaults' => [
                                 'controller' => HttpRoutesControllerFactory::SERVICE_NAME,
+                                'action' => 'index',
                             ],
                         ],
                         'child_routes' => [
@@ -82,6 +83,7 @@ return [
                                 'options' => [
                                     'route' => '/match-route',
                                     'defaults' => [
+                                        'controller' => HttpRoutesControllerFactory::SERVICE_NAME,
                                         'action' => 'matchRoute',
                                     ],
                                 ],

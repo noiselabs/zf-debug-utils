@@ -12,8 +12,11 @@
         syntaxCheck="true"
         columns="max"
 >
-    <testsuite name="ZfDebugModule tests">
-        <directory>./test</directory>
+    <testsuite name="unit">
+        <directory>./test/Unit</directory>
+    </testsuite>
+    <testsuite name="functional">
+        <directory>./test/Functional</directory>
     </testsuite>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">

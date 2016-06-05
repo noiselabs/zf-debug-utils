@@ -6,7 +6,7 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuletest;
+namespace Noiselabs\ZfDebugModuleTest\Unit;
 
 use Noiselabs\ZfDebugModule\Module;
 use Noiselabs\ZfDebugModule\Package;

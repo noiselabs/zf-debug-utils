@@ -6,16 +6,16 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuletest\Factory\Controller\Http;
+namespace Noiselabs\ZfDebugModuletest\Unit\Factory\Controller\Console;
 
-use Noiselabs\ZfDebugModule\Controller\Http\IndexController;
-use Noiselabs\ZfDebugModule\Factory\Controller\Http\IndexControllerFactory;
+use Noiselabs\ZfDebugModule\Controller\Console\RoutesController;
+use Noiselabs\ZfDebugModule\Factory\Controller\Console\RoutesControllerFactory;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 use Zend\Mvc\Controller\ControllerManager;
 use Zend\ServiceManager\ServiceManager;
 
-class IndexControllerFactoryTest extends PHPUnit_Framework_TestCase
+class RoutesControllerFactoryTest extends PHPUnit_Framework_TestCase
 {
     public function testCreateService()
     {
@@ -34,13 +34,13 @@ class IndexControllerFactoryTest extends PHPUnit_Framework_TestCase
             ->method('getServiceLocator')
             ->will($this->returnValue($serviceManager));
 
-        $factory = new IndexControllerFactory();
+        $factory = new RoutesControllerFactory();
         $controller = $factory->createService($controllerManager);
-        $this->assertInstanceOf(IndexController::class, $controller);
+        $this->assertInstanceOf(RoutesController::class, $controller);
     }
 
     public function testServiceNameIsDefined()
     {
-        $this->assertTrue(defined(IndexControllerFactory::class . '::SERVICE_NAME'));
+        $this->assertTrue(defined(RoutesControllerFactory::class . '::SERVICE_NAME'));
     }
 }
