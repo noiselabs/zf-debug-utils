@@ -34,7 +34,7 @@ project = u'Noiselabs ZfDebugModule'
 copyright = u'2016, Vítor Brandão'
 author = u'Vítor Brandão and contributors'
 version = '0.2'
-release = '0.2.0-DEV'
+release = '0.2.0'
 
 exclude_patterns = ['_build']
 pygments_style = 'sphinx'
