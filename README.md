@@ -6,7 +6,10 @@ Noiselabs ZfDebugModule
 [![Code Coverage](https://scrutinizer-ci.com/g/noiselabs/zf-debug-utils/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/noiselabs/zf-debug-utils/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/noiselabs/zf-debug-utils/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/noiselabs/zf-debug-utils/?branch=master)
 
-Console commands and other utilities for debugging ZF2 apps.
+WebUI and Console commands for debugging ZF2 apps.
+
+    DISCLAIMER: ZfDebugModule is still at an early development stage.
+    No Console commands were added so far.
 
 Installation
 ------------
@@ -31,7 +34,9 @@ Then enable this module by adding it and `AssetManager` (a dependency) to `appli
 Documentation
 -------------
 
+Documentation is available on Read the Docs: <https://zf-debug-utils.readthedocs.org/>
 
+* [Getting Started](getting-started.md)
 
 License
 -------

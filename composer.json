@@ -1,6 +1,6 @@
 {
     "name": "noiselabs/zf-debug-utils",
-    "description": "Console commands and other utilities for debugging ZF2 apps",
+    "description": "WebUI and Console commands for debugging ZF2 apps",
     "type": "library",
     "license": "MIT",
     "authors": [
