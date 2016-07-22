@@ -49,23 +49,23 @@ route.
 
 ### List all Routes
 
-#### WebUI
+_[ WebUI ]_
 
 Navigate to `/_debug/routes/list` or in the Home screen click in `List all Routes`. These are all the routes available
  in current application. Each column is sortable and you can filter results by using the search input.
 
 ![List all routes](_static/images/webui/routing-list-all-routes.png "List all routes")
 
-#### Console
+_[ Console ]_
 
-    $ php zfdebug routes list
+    $ php index.php zfdebug routes list
 
 ![Console - List routes](_static/images/console/route-list.png "Console - List routes")
 
 
 ### Match a Route 
 
-#### WebUI
+_[ WebUI ]_
 
 Navigate to `/_debug/routes/match` or in the Home screen click in `Match a Route`. Provide an HTTP method such as "GET"
 or "POST" plus a base URL (omit the scheme) and hit `Find Route`. If the URL matches a route in your application you
@@ -73,20 +73,20 @@ or "POST" plus a base URL (omit the scheme) and hit `Find Route`. If the URL mat
 
 ![Match a Route](_static/images/webui/routing-match-route.png "Match a Route")
 
-#### Console
+_[ Console ]_
 
-    $ php zfdebug routes match GET /_debug/routes/match
+    $ php index.php zfdebug routes match GET /_debug/routes/match
 
 ![Console - Route match](_static/images/console/route-match.png "Console - Route match")
 
 ### Export all routes in CSV format
 
-#### Console
+_[ Console ]_
 
 It is possible to have the output of the [List all Routes](#list-all-routes) feature saved into a CSV file. The generated file can then be loaded by spreadsheet applications and used in reports. 
 
 Note that the export feature is at the moment only available via the Console.
 
-    $ php zfdebug routes export
+    $ php index.php zfdebug routes export
 
 ![Console - Route export](_static/images/console/route-export.png "Console - Export all routes")
