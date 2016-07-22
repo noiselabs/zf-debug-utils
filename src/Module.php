@@ -8,10 +8,14 @@
 
 namespace Noiselabs\ZfDebugModule;
 
+use Zend\Console\Adapter\AdapterInterface as Console;
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\DependencyIndicatorInterface;
+use Zend\ModuleManager\Feature\ConsoleBannerProviderInterface;
+use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Zend\ModuleManager\Feature\InitProviderInterface;
+use Zend\ModuleManager\ModuleManagerInterface;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteInterface;
 use Zend\Mvc\Router\RouteMatch;
@@ -23,16 +27,17 @@ use Zend\Stdlib\RequestInterface;
  *
  * @author Vítor Brandão <vitor@noiselabs.org>
  */
-class Module implements BootstrapListenerInterface, ConfigProviderInterface, DependencyIndicatorInterface
+class Module implements BootstrapListenerInterface, ConfigProviderInterface, ConsoleBannerProviderInterface,
+    ConsoleUsageProviderInterface, InitProviderInterface
 {
     const DEFAULT_LAYOUT = 'noiselabs/zf-debug-utils/layout';
 
     /**
      * {@inheritdoc}
      */
-    public function getModuleDependencies()
+    public function init(ModuleManagerInterface $manager)
     {
-        return ['AssetManager'];
+        $manager->loadModule('AssetManager');
     }
 
     /**
@@ -48,7 +53,7 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Dep
      *
      * @param EventInterface|MvcEvent $e
      *
-     * @return array|null
+     * @return array|void
      */
     public function onBootstrap(EventInterface $e)
     {
@@ -58,6 +63,39 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Dep
 
         $currentRouteName = $this->getCurrentRouteName($e->getApplication()->getServiceManager());
         $e->getViewModel()->setVariables(['__currentRouteName' => $currentRouteName]);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param Console $console
+     *
+     * @return string
+     */
+    public function getConsoleBanner(Console $console)
+    {
+        return sprintf('%s v%s', Package::NAME, Package::VERSION);
+    }
+
+    /**
+     * @param Console $console
+     *
+     * @return array
+     */
+    public function getConsoleUsage(Console $console)
+    {
+        return [
+            '[ Routing ]',
+            '',
+            'zfdebug routes export' => 'Exports all routes in CSV format',
+            'zfdebug routes list' => 'Lists all routes',
+            'zfdebug routes match [METHOD] [URL]' => 'Matches a URL to a Route',
+            ['Examples:'],
+            ['$ zfdebug routes export', ''],
+            ['$ zfdebug routes list', ''],
+            ['$ zfdebug routes match GET /users/123', ''],
+            ['$ zfdebug routes match POST /login', ''],
+        ];
     }
 
     /**

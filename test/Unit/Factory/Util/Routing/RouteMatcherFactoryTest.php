@@ -6,7 +6,7 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuleTest\Unit\Factory\Util\Routing;
+namespace Noiselabs\ZfDebugModuletest\Unit\Factory\Util\Routing;
 
 use Noiselabs\ZfDebugModule\Factory\Util\Routing\RouteMatcherFactory;
 use Noiselabs\ZfDebugModule\Util\Routing\RouteMatcher;
@@ -31,7 +31,7 @@ class RouteMatcherFactoryTest extends PHPUnit_Framework_TestCase
         $serviceManager
             ->expects($this->any())
             ->method('get')
-            ->with('router')
+            ->with('HttpRouter')
             ->will($this->returnValue($router));
 
         $factory = new RouteMatcherFactory();

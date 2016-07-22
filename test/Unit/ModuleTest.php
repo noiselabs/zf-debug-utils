@@ -6,14 +6,16 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuleTest\Unit;
+namespace Noiselabs\ZfDebugModuletest\Unit;
 
 use Noiselabs\ZfDebugModule\Module;
 use Noiselabs\ZfDebugModule\Package;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
+use Zend\Console\Adapter\AdapterInterface as Console;
 use Zend\EventManager\Event;
 use Zend\Http\Request;
+use Zend\ModuleManager\ModuleManagerInterface;
 use Zend\Mvc\Application;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
@@ -25,8 +27,12 @@ class ModuleTest extends PHPUnit_Framework_TestCase
     public function testDependencyOnAssetManagerIsSet()
     {
         $module = new Module();
-        $dependencies = $module->getModuleDependencies();
-        $this->assertContains('AssetManager', $dependencies);
+        $moduleManager = $this->getMock(ModuleManagerInterface::class);
+        $moduleManager
+            ->expects($this->exactly(1))
+            ->method('loadModule')
+            ->with('AssetManager');
+        $module->init($moduleManager);
     }
 
     public function testCurrentRouteNameViewModelVariableIsSetOnBootstrap()
@@ -80,6 +86,22 @@ class ModuleTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $config['service_manager']['factories']);
         $this->assertTrue(isset($config['view_manager']['template_map']));
         $this->assertInternalType('array', $config['view_manager']['template_map']);
+    }
+
+    public function testGetConsoleBanner()
+    {
+        $module = new Module();
+        $console = $this->getMock(Console::class);
+        $consoleBanner = $module->getConsoleBanner($console);
+        $this->assertInternalType('string', $consoleBanner);
+    }
+
+    public function testGetConsoleUsage()
+    {
+        $module = new Module();
+        $console = $this->getMock(Console::class);
+        $consoleUsage = $module->getConsoleUsage($console);
+        $this->assertInternalType('array', $consoleUsage);
     }
 
     /**

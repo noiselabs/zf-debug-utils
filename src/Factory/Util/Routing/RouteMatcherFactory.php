@@ -25,7 +25,7 @@ class RouteMatcherFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         /** @var RouteStackInterface $router */
-        $router = $serviceLocator->get('router');
+        $router = $serviceLocator->get('HttpRouter');
 
         return new RouteMatcher($router);
     }

@@ -41,12 +41,30 @@ return [
     'console' => [
         'router' => [
             'routes' => [
-                Package::FQPN . '/router/list-all' => [
+                Package::FQPN . '/router/export' => [
                     'options' => [
-                        'route' => 'debug:router:list-all',
+                        'route' => 'zfdebug routes export',
                         'defaults' => [
-                            'controller' => HttpRoutesControllerFactory::SERVICE_NAME,
-                            'action' => 'listAll',
+                            'controller' => ConsoleRoutesControllerFactory::SERVICE_NAME,
+                            'action' => 'export',
+                        ],
+                    ],
+                ],
+                Package::FQPN . '/router/list' => [
+                    'options' => [
+                        'route' => 'zfdebug routes list',
+                        'defaults' => [
+                            'controller' => ConsoleRoutesControllerFactory::SERVICE_NAME,
+                            'action' => 'list',
+                        ],
+                    ],
+                ],
+                Package::FQPN . '/router/match' => [
+                    'options' => [
+                        'route' => 'zfdebug routes match <method> <url>',
+                        'defaults' => [
+                            'controller' => ConsoleRoutesControllerFactory::SERVICE_NAME,
+                            'action' => 'match',
                         ],
                     ],
                 ],

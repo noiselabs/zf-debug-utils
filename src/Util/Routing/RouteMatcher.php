@@ -32,6 +32,7 @@ class RouteMatcher
     /**
      * @param string $method
      * @param string $url
+     *
      * @return null|string
      */
     public function match($method, $url)
@@ -41,6 +42,7 @@ class RouteMatcher
         $request->setUri($url);
 
         $routeMatch = $this->router->match($request);
+
         return ($routeMatch instanceof RouteMatch) ? $routeMatch->getMatchedRouteName() : null;
     }
 }

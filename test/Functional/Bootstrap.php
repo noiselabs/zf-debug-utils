@@ -6,7 +6,7 @@
  * @copyright 2016 Vítor Brandão <vitor@noiselabs.org>
  */
 
-namespace Noiselabs\ZfDebugModuletest\Functional;
+namespace Noiselabs\ZfDebugModuleTest\Functional;
 
 class Bootstrap
 {

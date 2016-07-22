@@ -8,9 +8,6 @@ Noiselabs ZfDebugModule
 
 WebUI and Console commands for debugging ZF2 apps.
 
-    DISCLAIMER: ZfDebugModule is still at an early development stage.
-    No Console commands were added so far.
-
 Installation
 ------------
 
@@ -21,12 +18,11 @@ composer require noiselabs/zf-debug-utils
 ```
     
     
-Then enable this module by adding it and `AssetManager` (a dependency) to `application.config.php`.
+Then enable this module by adding it to `application.config.php`.
     
 ```php
 <?php
 'modules' => [
-    'AssetManager',
     'Noiselabs\ZfDebugModule',
 ],
 ```
