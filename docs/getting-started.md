@@ -49,14 +49,14 @@ route.
 
 ### List all Routes
 
-`WebUI:`
+#### WebUI
 
 Navigate to `/_debug/routes/list` or in the Home screen click in `List all Routes`. These are all the routes available
  in current application. Each column is sortable and you can filter results by using the search input.
 
 ![List all routes](_static/images/webui/routing-list-all-routes.png "List all routes")
 
-`Console:`
+#### Console
 
     $ php zfdebug routes list
 
@@ -65,19 +65,23 @@ Navigate to `/_debug/routes/list` or in the Home screen click in `List all Route
 
 ### Match a Route 
 
+#### WebUI
+
 Navigate to `/_debug/routes/match` or in the Home screen click in `Match a Route`. Provide an HTTP method such as "GET"
 or "POST" plus a base URL (omit the scheme) and hit `Find Route`. If the URL matches a route in your application you
  should see something similar to the following picture. You can see details such as the route URL, controller and action.
 
 ![Match a Route](_static/images/webui/routing-match-route.png "Match a Route")
 
-`Console:`
+#### Console
 
     $ php zfdebug routes match GET /_debug/routes/match
 
 ![Console - Route match](_static/images/console/route-match.png "Console - Route match")
 
 ### Export all routes in CSV format
+
+#### Console
 
 It is possible to have the output of the [List all Routes](#list-all-routes) feature saved into a CSV file. The generated file can then be loaded by spreadsheet applications and used in reports. 
 

@@ -17,5 +17,5 @@ class Package
     const NAME = 'zf-debug-utils';
     const FQPN = 'noiselabs/zf-debug-utils'; // Fully Qualified Package Name
     const DESCRIPTION = 'WebUI and Console commands for debugging ZF2 apps';
-    const VERSION = '0.3.0-DEV';
+    const VERSION = '0.3.0';
 }
