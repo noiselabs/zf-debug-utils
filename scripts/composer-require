@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: composer-require <ZF_VERSION>"
+
+    exit -1
+fi
+
+ZF_VERSION=$1
+
+PACKAGES="zendframework/zend-console
+zendframework/zend-modulemanager
+zendframework/zend-mvc
+zendframework/zend-servicemanager
+zendframework/zend-view
+zendframework/zend-i18n
+zendframework/zend-log
+zendframework/zend-test
+zendframework/zend-serializer"
+
+for PACKAGE in $PACKAGES; do
+    echo -n "composer require ${PACKAGE}:${ZF_VERSION}"
+    composer require -q "${PACKAGE}:${ZF_VERSION}" --no-update
+    echo ""
+done
