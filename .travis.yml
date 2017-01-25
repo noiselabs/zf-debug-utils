@@ -11,15 +11,24 @@ matrix:
   fast_finish: true
   include:
     - php: 5.5
+      env: ZF_VERSION=2.3.*
+    - php: 5.5
+      env: ZF_VERSION=2.4.*
     - php: 5.6
+      env: ZF_VERSION=2.3.*
+    - php: 5.6
+      env: ZF_VERSION=2.4.*
     - php: 7
     - php: hhvm
   allow_failures:
     - php: hhvm
 
 before_script:
-  - composer self-update
-  - composer install --prefer-dist
+  - travis_retry composer self-update
+  - if [ "ZF_VERSION" != "" ]; then ./scripts/composer-require "ZF_VERSION"; fi;
+
+install:
+  - travis_retry composer update --prefer-dist --no-interaction
 
 script:
   - composer test-coverage
